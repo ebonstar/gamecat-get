@@ -33,7 +33,8 @@ function getMonsterRank(table) {
 function getMonsterMaterials(tables, ranks) {
   const materials = [];
   tables.forEach((table, i) => {
-    const rows = [...table.querySelectorAll("tbody tr")];
+    // remove the header row
+    const rows = [...table.querySelectorAll("tr")].slice(1);
     rows.forEach((row) => {
       const cells = getTextFromNodes(row, "td");
 
