@@ -1,0 +1,24 @@
+{
+  "name": "gamecat-get",
+  "version": "1.0.0",
+  "description": "scrape data from the gamecat wiki",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebonstar/gamecat-get.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebonstar/gamecat-get/issues"
+  },
+  "homepage": "https://github.com/ebonstar/gamecat-get#readme",
+  "dependencies": {
+    "got": "^12.5.3",
+    "jsdom": "^20.0.3"
+  },
+  "type": "module"
+}
