@@ -1,14 +1,13 @@
 import got from "got";
 import { JSDOM } from "jsdom";
+import { getTextFromNodes } from "./utils.js";
 
 /**
  * getMonsterName
  * return english monster name
  */
 function getMonsterName(table) {
-  const cells = Array.from(table.querySelectorAll("td")).map((cell) =>
-    cell.textContent.trim()
-  );
+  const cells = getTextFromNodes(table, "td");
   return cells[0];
 }
 
@@ -20,9 +19,7 @@ function getMonsterMaterials(table) {
   const materials = [];
   const rows = Array.from(table.querySelectorAll("tbody tr"));
   rows.forEach((row) => {
-    const cells = Array.from(row.querySelectorAll("td")).map((cell) =>
-      cell.textContent.trim()
-    );
+    const cells = getTextFromNodes(row, "td");
 
     materials.push({
       name: cells[1],
@@ -52,9 +49,8 @@ export async function getMonsters() {
   const monster = {};
   const tables = page.querySelectorAll("table.wikitable.sortable");
   tables.forEach((table) => {
-    const headers = Array.from(table.querySelectorAll("th")).map((header) =>
-      header.textContent.trim()
-    );
+    const headers = getTextFromNodes(table, "th");
+
     if (headers.includes("Japanese")) monster.name = getMonsterName(table);
     if (headers.includes("Material name"))
       monster.materials = getMonsterMaterials(table);
